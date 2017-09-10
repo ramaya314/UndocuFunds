@@ -3,24 +3,17 @@ import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
-import Dimensions from 'react-dimensions';
-
 import MainTheme from '../themes/MainTheme';
 
 import { Grid, Col, Row } from 'react-bootstrap';
 
-import MainNavBar from '../components/MainNavBar';
-
-import MainFooter from '../components/MainFooter';
-
-class HomePage extends Component {
+class FundsPage extends Component {
  
 	getStyles() {
 		const styles = {
 		};
 		return styles;
 	}
-
 
 	render() {
 
@@ -30,21 +23,19 @@ class HomePage extends Component {
 			<MuiThemeProvider muiTheme={getMuiTheme(MainTheme)}>
 				<div>
 
-		  			<MainNavBar />
 
 					<Grid className="mainPageContentGrid">
 						<Row>
-							<Col xs={12} lgHidden={true}>
-								HOME
+							<Col xs={12}>
+								Funds
 							</Col>
 						</Row>
 					</Grid>
 
-		  			<MainFooter />
 				</div>
 			</MuiThemeProvider>
 		);
 	} 
 }
 
-export default Dimensions()(HomePage);
+export default FundsPage;

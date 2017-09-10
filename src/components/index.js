@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 //import 'bootstrap/dist/css/bootstrap.css'
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
+
 import Login from './Login'
 import Register from './Register'
 import Home from './Home'
+import ProfilePage from '../pages/ProfilePage'
+import FundsPage from '../pages/FundsPage'
+
 import Dashboard from './protected/Dashboard'
 import MainFooter from './MainFooter'
 import MainNavBar from './MainNavBar'
@@ -77,9 +81,11 @@ export default class App extends Component {
                           <Route path='/' exact component={Home} />
                           <PublicRoute authed={this.state.authed} path='/login' component={Login} />
                           <PublicRoute authed={this.state.authed} path='/register' component={Register} />
-                          <PrivateRoute authed={this.state.authed} path='/dashboard' component={Dashboard} />
+                          <PrivateRoute authed={this.state.authed} path='/profile' component={ProfilePage} />
+                          <PrivateRoute authed={this.state.authed} path='/funds' component={FundsPage} />
                           <Route render={() => <h3>No Match</h3>} />
                         </Switch>
+
                       </Col>
                     </Row>
                   </Grid>

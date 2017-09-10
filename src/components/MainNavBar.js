@@ -11,6 +11,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 import MetaTags from 'react-meta-tags';
 
+import { logout } from '../helpers/auth'
+
 class MainNavBar extends React.Component {
 
 	constructor(props) {
@@ -88,18 +90,35 @@ class MainNavBar extends React.Component {
 					</Navbar.Header>
 					<Navbar.Collapse>
 						<Nav pullRight>
-							<LinkContainer to="/login">
-								<NavItem eventKey={3} >Login</NavItem>
-							</LinkContainer>
-							<LinkContainer to="/register">
-								<NavItem eventKey={3} >Register</NavItem>
+
+							<LinkContainer to="/funds">
+								<NavItem eventKey={1} >Funds</NavItem>
 							</LinkContainer>
 
-              				{this.props.authed &&
-								<LinkContainer to="/dashboard">
-									<NavItem eventKey={3} >Dashboard</NavItem>
+              				{this.props.authed && 
+								<LinkContainer to="/profile">
+									<NavItem eventKey={2} >Profile</NavItem>
 								</LinkContainer>
 							}
+
+              				{!this.props.authed && 
+              					<LinkContainer to="/login">
+									<NavItem eventKey={3} >Login</NavItem>
+								</LinkContainer>
+							}
+
+              				{!this.props.authed && 
+								<LinkContainer to="/register">
+									<NavItem eventKey={4} >Register</NavItem>
+								</LinkContainer>
+							}
+
+              				{this.props.authed && 
+								<NavItem eventKey={5} onClick={() => {
+		                          logout()
+		                        }}> Log Out</NavItem>
+							}
+
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>
