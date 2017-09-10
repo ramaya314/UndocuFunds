@@ -2,6 +2,7 @@ import {
   cyan700, cyan500,
   grey600, grey300,
   pinkA100, pinkA200, pinkA400,
+  grey900,
   fullWhite, white,
   darkBlack, fullBlack
 } from 'material-ui/styles/colors';
@@ -13,7 +14,7 @@ export default {
   font: '17px/1 "Oxygen", sans-serif',
   fontFamily: '"Oxygen", sans-serif',
   palette: {
-    primary1Color: '#cca744',
+    primary1Color: grey900,
     primary2Color: cyan700,
     primary3Color: grey600,
     accent1Color: pinkA200,

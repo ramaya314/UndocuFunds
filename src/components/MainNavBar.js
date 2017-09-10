@@ -41,6 +41,8 @@ class MainNavBar extends React.Component {
 			},
 			navBar: {
 				border:0,
+				minHeight: 100,
+				borderRadius: 0,
 			},
 			navBarLogoImage: {
 				height: 53,
@@ -79,13 +81,11 @@ class MainNavBar extends React.Component {
 				className={(this.state.navbarBrandVisible || this.props.containerWidth < 768? "mainNavBar" :  "mainNavBarInvisible")}
 					>
 					<Navbar.Header>
-						{this.state.navbarBrandVisible && 
 							<Navbar.Brand>
 								<a href="/" style={styles.navBarLogoImage} className="headerLogo">
-									<Image src="/images/logo.png" responsive />
+									<Image src="/images/LOGO_horiz_white_text.gif" responsive style={{width:150}}/>
 								</a>
 							</Navbar.Brand>
-						}
 						<Navbar.Toggle />
 					</Navbar.Header>
 					<Navbar.Collapse>

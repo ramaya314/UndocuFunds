@@ -42,6 +42,14 @@ function PublicRoute ({component: Component, authed, ...rest}) {
   )
 }
 
+function AmbigousRoute ({component: Component, authed, ...rest}) {
+  return (
+    <Route {...rest}
+      render={(props) => <Component {...props} authed={authed}/> }
+    />
+  )
+}
+
 export default class App extends Component {
   state = {
     authed: false,
@@ -78,11 +86,11 @@ export default class App extends Component {
                       <Col xs={12}>
                         
                         <Switch>
-                          <Route path='/' exact component={Home} />
+                          <Route path='/' exact component={FundsPage} />
                           <PublicRoute authed={this.state.authed} path='/login' component={Login} />
                           <PublicRoute authed={this.state.authed} path='/register' component={Register} />
                           <PrivateRoute authed={this.state.authed} path='/profile' component={ProfilePage} />
-                          <PublicRoute authed={this.state.authed} path='/funds' component={FundsPage} />
+                          <AmbigousRoute path='/funds' authed={this.state.authed} component={FundsPage} />
                           <Route render={() => <h3>No Match</h3>} />
                         </Switch>
 

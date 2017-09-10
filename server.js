@@ -32,13 +32,13 @@ app.get('/api/funds/scholarships', (req, res) => {
   });
 });
 
-app.get('/api/funds/legalAid', (req, res) => {
+app.get('/api/funds/legalaid', (req, res) => {
 
   var isLocalHost = req.headers.host.toLowerCase().indexOf('localhost') >= 0;
 
   var sheetProvider = new googleSheetsProvider("1bZPAHpFqFyiEykCHXn6ftS0KI2ErspPbMKNdREOrhuI");
 
-  sheetProvider.getRowsForRange("Scholarships!A1:J1000", function(response) {
+  sheetProvider.getRowsForRange("Legal Aid!A2:J1000", function(response) {
     res.end(JSON.stringify(response));
   }, function(err) {
     res.status(401).end("funds fetch fail!: " + err);
@@ -52,7 +52,7 @@ app.get('/api/funds/health', (req, res) => {
 
   var sheetProvider = new googleSheetsProvider("1bZPAHpFqFyiEykCHXn6ftS0KI2ErspPbMKNdREOrhuI");
 
-  sheetProvider.getRowsForRange("Scholarships!A1:J1000", function(response) {
+  sheetProvider.getRowsForRange("Healthcare Resources!A1:J1000", function(response) {
     res.end(JSON.stringify(response));
   }, function(err) {
     res.status(401).end("funds fetch fail!: " + err);

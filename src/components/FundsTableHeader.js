@@ -5,7 +5,7 @@ import {Grid, Col, Row } from 'react-bootstrap';
 import Done from 'material-ui/svg-icons/action/done';
 
 
-class ScholarshipFundsTableRow extends React.Component
+class ScholarshipFundsHeader extends React.Component
 {
 
 	getStyles() {
@@ -25,24 +25,21 @@ class ScholarshipFundsTableRow extends React.Component
 		var styles = this.getStyles();
 		return(
 			<Row style={(this.props.index %2 == 0 ? styles.normalRow : styles.altRow)}>
-				<Col xs={5} sm={this.props.authed ? 5 : 6} md={4} lg={3}>
-
-					<a href={this.props.data.Url} target="_blank">
-						{this.props.data.nameOfTheScholarship}
-					</a>
+				<Col xs={5} sm={this.props.authed ? 5 : 6} md={4} lg={3}  style={{fontWeight: 'bold'}}>
+					Name
 				</Col>
 
-				<Col xs={5} sm={this.props.authed ? 5 : 6} md={this.props.authed ? 3 : 4} lg={3} >
-					{this.props.data.statusRequired}
+				<Col xs={5} sm={this.props.authed ? 5 : 6} md={this.props.authed ? 3 : 4} lg={3}  style={{fontWeight: 'bold'}}>
+					Legal Status Required
 				</Col>
 
-				<Col xsHidden={true} smHidden={true} md={this.props.authed ? 3 : 4} lg={this.props.authed ? 4: 3}>
-					{this.props.data.deadline}
+				<Col xsHidden={true} smHidden={true} md={this.props.authed ? 3 : 4} lg={this.props.authed ? 4: 3}  style={{fontWeight: 'bold'}}>
+					Deadline
 				</Col>
 
 				{!this.props.authed && 
-					<Col xsHidden={true} smHidden={true} mdHidden={true} lg={3}  >
-						{this.props.data.educationLevelRequired}
+					<Col xsHidden={true} smHidden={true} mdHidden={true} lg={3} style={{fontWeight: 'bold'}}>
+						Education Level Required
 					</Col>
 				}
 
@@ -57,7 +54,7 @@ class ScholarshipFundsTableRow extends React.Component
 	}
 }
 
-class LegalFundsTableRow extends React.Component
+class LegalFundsHeader extends React.Component
 {
 
 	getStyles() {
@@ -81,20 +78,16 @@ class LegalFundsTableRow extends React.Component
 		return(
 
 			<Row style={(this.props.index %2 == 0 ? styles.normalRow : styles.altRow)}>
-				<Col xs={4} >
-
-					<a href={this.props.data.Website} target="_blank">
-						{this.props.data.nameOfTheOrganization}
-					</a>
+				<Col xs={4} style={{fontWeight: 'bold'}}>
+					Organization
 				</Col>
 
-				<Col xs={this.props.authed ? 3 : 4} >
-					{this.props.data.state}
+				<Col xs={this.props.authed ? 3 : 4} style={{fontWeight: 'bold'}}>
+					State
 				</Col>
 
-				<Col xs={this.props.authed ? 3 : 4} >
-					{this.props.data.filingFeeIncluded}
-
+				<Col xs={this.props.authed ? 3 : 4} style={{fontWeight: 'bold'}}>
+					Filing Fee Included
 				</Col>
 
 				{this.props.authed && 
@@ -107,7 +100,7 @@ class LegalFundsTableRow extends React.Component
 	}
 }
 
-class HealthFundsTableRow extends React.Component
+class HealthFundsHeader extends React.Component
 {
 
 	getStyles() {
@@ -131,18 +124,15 @@ class HealthFundsTableRow extends React.Component
 
 		return(
 			<Row style={(this.props.index %2 == 0 ? styles.normalRow : styles.altRow)}>
-				<Col xs={4} >
-
-					<a href={this.props.data.url} target="_blank">
-						{this.props.data.name}
-					</a>
+				<Col xs={4} style={{fontWeight: 'bold'}}>
+					Name
 				</Col>
 
-				<Col xs={4} >
-					{this.props.data.state}
+				<Col xs={4}  style={{fontWeight: 'bold'}}>
+					State
 				</Col>
 
-				<Col>
+				<Col style={{fontWeight: 'bold'}}>
 					{this.props.private && 
 						<Checkbox
 							checkedIcon={<Visibility />}
@@ -152,7 +142,7 @@ class HealthFundsTableRow extends React.Component
 					}
 				</Col>
 
-				<Col>
+				<Col style={{fontWeight: 'bold'}}>
 					{this.props.public && 
 						<Checkbox
 							checkedIcon={<Visibility />}
@@ -162,7 +152,7 @@ class HealthFundsTableRow extends React.Component
 					}
 				</Col>
 
-				<Col>
+				<Col style={{fontWeight: 'bold'}}>
 					{this.props.nonprofit == "TRUE" && 
 						<Checkbox
 							checkedIcon={<Visibility />}
@@ -188,11 +178,11 @@ class FundsTableRow extends React.Component
 
 		switch(this.props.type) {
 			case "scholarships":
-				return (<ScholarshipFundsTableRow data={this.props.data} index={this.props.index} authed={this.props.authed} />);
+				return (<ScholarshipFundsHeader authed={this.props.authed} />);
 			case "legalaid":
-				return (<LegalFundsTableRow data={this.props.data} index={this.props.index} authed={this.props.authed} />);
+				return (<LegalFundsHeader authed={this.props.authed} />);
 			case "health":
-				return (<HealthFundsTableRow data={this.props.data} index={this.props.index} authed={this.props.authed} />);
+				return (<HealthFundsHeader authed={this.props.authed} />);
 		}
 
 	}

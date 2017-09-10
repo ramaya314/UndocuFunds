@@ -11,60 +11,19 @@ import FundsMap from '../components/FundsMap';
 import FundsList from '../components/FundsList';
 import Loading from 'react-loading';
 
-import Utils from '../Utils'
+import Utils from '../Utils';
+
+
+import {Tabs, Tab} from 'material-ui/Tabs';
 
 class FundsPage extends Component {
  
-
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: [],
-			isLoading : true,
-		}
-		this.getFundsData();
-	}   
-
-	getFundsData() {
-
-		let host = window.location.protocol + "//" +
-					window.location.hostname +
-					(window.location.hostname.toLowerCase().indexOf('localhost') >= 0 ? ":4000" :
-						(window.location.port ? ":" + window.location.port : ""));
-
-		let action = "/api/funds/scholarships";
-
-		let fullRequest = host + action;
-		var that = this;
-
-		fetch(fullRequest, {
-			method : "GET",
-		}).then(function(res) {
-			if (res.ok) {
-				res.json().then(function(json) {
-					var data = Utils.prepareGSArrayForTable(json);
-
-					//aplhabetical sort
-					/*
-					data.sort(function(a, b) {
-						var textA = a.Name.toUpperCase();
-						var textB = b.Name.toUpperCase();
-						return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
-					});
-					*/
-
-					//console.log(data);
-					that.setState({
-						data : data,
-						isLoading: false,
-					});
-				}); 
-			} else if (res.status === 401) {
-				console.log(res);
-			}
-		}, function(e) {
-			console.log(e);
-		});
+			tabValue: 0,
+			selectedState: '',
+		};
 	}
 
 	getStyles() {
@@ -73,33 +32,53 @@ class FundsPage extends Component {
 		return styles;
 	}
 
+	handleTabChange = (value) => {
+		this.setState({
+			tabValue: value,
+		});
+	};
+
+	onStateClick = (state) => {
+		this.setState({
+			selectedState: state,
+		});
+	};
+
 	render() {
 
 		const styles = this.getStyles();
 
+		console.log(this.props);
 		return (
 			<MuiThemeProvider muiTheme={getMuiTheme(MainTheme)}>
 				<div>
 
-
 					<Grid className="mainPageContentGrid">
 						<Row>
 							<Col xs={12}>
-								<FundsMap />
+								<FundsMap onStateClick={this.onStateClick} />
 							</Col>
 
 							<Col xs={12}>
+								<Tabs value={this.state.tabValue} onChange={this.handleTabChange} >
+									<Tab label="Scholarships" value={0} >
+										<div>
+											<FundsList type={"scholarships"} authed={this.props.authed} stateFilter={this.state.selectedState} />
+										</div>
+									</Tab>
+									<Tab label="Legal Aid" value={1} >
+										<div>
+											<FundsList type={"legalaid"} authed={this.props.authed} stateFilter={this.state.selectedState} />
+										</div>
+									</Tab>
+									<Tab label="Health" value={2} >
+										<div>
+											<FundsList type={"health"} authed={this.props.authed} stateFilter={this.state.selectedState} />
+										</div>
+									</Tab>
 
-								<div style={{textAlign:'center', display:(this.state.isLoading ? "" : "none")}}>
-									<div style={{width:64,height:64,marginLeft:'auto',marginRight:'auto'}}>
-										<Loading type='spin' color='#000' />
-									</div>
-								</div>
 
-				      			{!this.state.isLoading && 
-									<FundsList data={this.state.data} />
-								}
-
+								</Tabs>
 							</Col>
 						</Row>
 					</Grid>
