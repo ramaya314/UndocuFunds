@@ -28,6 +28,28 @@ body {
 
 
 
+.backButton::before {
+	display: inline-block;
+    font-family: FontAwesome;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-size: inherit;
+    font-size-adjust: none;
+    font-stretch: normal;
+    font-style: normal;
+    font-synthesis: weight style;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+    transform: translate(0px, 0px);
+    content: "\f190";
+    padding-right: 8px;
+    font-size: 30px !important;
+}
+
+
 
 /*========= FOOTER ===============*/
 

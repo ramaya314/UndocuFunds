@@ -4,6 +4,7 @@ import {Grid, Col, Row } from 'react-bootstrap';
 
 import Done from 'material-ui/svg-icons/action/done';
 
+import { LinkContainer } from 'react-router-bootstrap';
 
 class ScholarshipFundsTableRow extends React.Component
 {
@@ -48,7 +49,9 @@ class ScholarshipFundsTableRow extends React.Component
 
 				{this.props.authed && 
 					<Col xs={2}>
-	          			<button  style={{margin:7}} type="submit" className="btn btn-primary">Apply</button>
+						<LinkContainer to="/applyconfirmation">
+	          				<button  style={{margin:7}} type="submit" className="btn btn-primary" >Apply</button>
+						</LinkContainer>
 					</Col>
 				}
 
@@ -99,7 +102,9 @@ class LegalFundsTableRow extends React.Component
 
 				{this.props.authed && 
 					<Col xs={2}>
-	          			<button style={{margin:7}} type="submit" className="btn btn-primary">Apply</button>
+						<LinkContainer to="/applyconfirmation">
+	          				<button  style={{margin:7}} type="submit" className="btn btn-primary" >Apply</button>
+						</LinkContainer>
 					</Col>
 				}
 			</Row>
@@ -174,7 +179,9 @@ class HealthFundsTableRow extends React.Component
 
 				{this.props.authed && 
 					<Col xs={2}>
-	          			<button type="submit" className="btn btn-primary">Apply</button>
+						<LinkContainer to="/applyconfirmation">
+	          				<button  style={{margin:7}} type="submit" className="btn btn-primary" >Apply</button>
+						</LinkContainer>
 					</Col>
 				}
 			</Row>

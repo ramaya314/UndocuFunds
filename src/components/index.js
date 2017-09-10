@@ -6,6 +6,8 @@ import userActions from '../actions/user-actions'
 import Login from './Login'
 import Register from './Register'
 import Home from './Home'
+import FundApplyConfirmation from './FundApplyConfirmation'
+
 import ProfilePage from '../pages/ProfilePage'
 import FundsPage from '../pages/FundsPage'
 
@@ -88,11 +90,13 @@ export default class App extends Component {
                       <Col xs={12}>
 
                         <Switch>
-                          <Route path='/' exact component={FundsPage} />
+                          <AmbigousRoute path='/' authed={this.state.authed} exact component={FundsPage} />
                           <PublicRoute authed={this.state.authed} path='/login' component={Login} />
                           <PublicRoute authed={this.state.authed} path='/register' component={Register} />
                           <PrivateRoute authed={this.state.authed} path='/profile' component={ProfilePage} />
                           <AmbigousRoute path='/funds' authed={this.state.authed} component={FundsPage} />
+
+                          <PrivateRoute authed={this.state.authed} path='/applyconfirmation' component={FundApplyConfirmation} />
                           <Route render={() => <h3>No Match</h3>} />
                         </Switch>
 
