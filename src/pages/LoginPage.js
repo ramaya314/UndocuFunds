@@ -10,8 +10,8 @@ import MainTheme from '../themes/MainTheme';
 import { Grid, Col, Row } from 'react-bootstrap';
 
 import MainNavBar from '../components/MainNavBar';
-
 import MainFooter from '../components/MainFooter';
+import Login from '../components/Login';
 
 class HomePage extends Component {
  
@@ -29,13 +29,13 @@ class HomePage extends Component {
 		return (
 			<MuiThemeProvider muiTheme={getMuiTheme(MainTheme)}>
 				<div>
-
+				
 		  			<MainNavBar />
 
 					<Grid className="mainPageContentGrid">
 						<Row>
 							<Col xs={12} lgHidden={true}>
-								HOME
+								<Login />
 							</Col>
 						</Row>
 					</Grid>

@@ -12,7 +12,7 @@ var database = function() {
 
 	var module = {};
 
-	var usr = "ramaya";
+	var usr = "UndocuFundsTeam";
 	var sqlsrvp = process.env.DB_PW;
 	var host = process.env.DB_URL || "ricamaya.cpzojuqt1ybh.us-east-1.rds.amazonaws.com";
 	var port = "5432";

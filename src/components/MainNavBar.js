@@ -73,14 +73,14 @@ class MainNavBar extends React.Component {
 					<meta id="og-image" property="og:image" content={this.props.backgroundImage} />
 				</MetaTags>
 
-				<Navbar inverse collapseOnSelect staticTop fixedTop fluid style={styles.navBar} expanded={this.state.navbarExpanded} 
+				<Navbar inverse collapseOnSelect fluid style={styles.navBar} expanded={this.state.navbarExpanded} 
 				className={(this.state.navbarBrandVisible || this.props.containerWidth < 768? "mainNavBar" :  "mainNavBarInvisible")}
 					>
 					<Navbar.Header>
 						{this.state.navbarBrandVisible && 
 							<Navbar.Brand>
 								<a href="/" style={styles.navBarLogoImage} className="headerLogo">
-									<Image src="/images/logoWhite.png" responsive />
+									<Image src="/images/logo.png" responsive />
 								</a>
 							</Navbar.Brand>
 						}
@@ -88,9 +88,18 @@ class MainNavBar extends React.Component {
 					</Navbar.Header>
 					<Navbar.Collapse>
 						<Nav pullRight>
-							<LinkContainer to="/">
-								<NavItem eventKey={3} >Home</NavItem>
+							<LinkContainer to="/login">
+								<NavItem eventKey={3} >Login</NavItem>
 							</LinkContainer>
+							<LinkContainer to="/register">
+								<NavItem eventKey={3} >Register</NavItem>
+							</LinkContainer>
+
+              				{this.props.authed &&
+								<LinkContainer to="/dashboard">
+									<NavItem eventKey={3} >Dashboard</NavItem>
+								</LinkContainer>
+							}
 						</Nav>
 					</Navbar.Collapse>
 				</Navbar>

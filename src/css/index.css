@@ -8,13 +8,6 @@ body {
   font-family: 'Open Sans', Verdana, Geneva, sans-serif;
 }
 
-.masonDreamerLink
-{
-	color: #0066cc !important;
-	text-decoration: none;
-	padding-left: 4px;
-}
-
 
 /* styles to make react tables smaller on phones*/
 @media all and (max-width: 599px)   and (orientation : portrait), (max-width: 899px)  and (orientation : landscape) 
@@ -27,229 +20,12 @@ body {
 	}
 }
 
-h1 {
-	color: #006940;
-	font-weight: 600;
-	border-bottom: 2px solid rgb(254, 190, 16);
-}
-
-h2 {
-	font-size: 20px;
-}
-
-a {
-	color: rgb(108, 184, 58);
-	text-decoration: none;
-	word-wrap: break-word;
-}
-
 .mainPageContentGrid {
 	font: '17px/1 "Oxygen", sans-serif';
 	color: #73726f;
 	line-height: 30px;
 }
 
-
-
-/*========== NAVBAR STYLES ============*/
-
-.mainNavBar {
-	-webkit-box-shadow: inset 0 -45px 100px -30px rgb(254, 190, 16);
-    animation-name: navbaranimation;
-    animation-duration: 0.5s;
-    background: rgb(0, 105, 64) !important;
-    background-color: rgb(0, 105, 64) !important;
-}
-
-@keyframes navbaranimation {
-    from {
-    	background-color: transparent;
-	    -webkit-box-shadow: inset 0 -45px 100px -30px rgba(254, 190, 16, 0);
-    }
-    to {
-    	background-color: rgb(0, 105, 64);
-	    -webkit-box-shadow: inset 0 -45px 100px -30px rgba(254, 190, 16, 1);
-    }
-}
-
-.mainNavBarInvisible {
-	backgroundColor: 'transparent',
-}
-
-.mainNavBarFullVisible {
-
-	-webkit-box-shadow: inset 0 -45px 100px -30px rgb(254, 190, 16);
-}
-
-.navbar-fixed-top {
-	background: transparent;
-	border:0;
-}
-.headerLogo{
-	padding: 0;
-}
-.headerLogo img{
-	height:100%;
-}
-
-.navbar-nav {
-	margin: 0px -15px;
-}
-.navbar-nav>li>a {
-	color:#fff !important;
-    border-bottom: 3px transparent solid;
-}
-
-.navbar-inverse .navbar-nav>.active>a, 
-.navbar-nav>li>a:hover
-{
-    border-bottom: 3px rgb(254, 190, 16) solid;
-    color: rgb(254, 190, 16) !important;
-}
-
-
-.navbar-inverse .navbar-toggle {
-	border:none !important;
-}
-
-.headerBannerScreen::before{
-	content: "";
-	height: 100%;
-	left: 0;
-	margin: 0 auto;
-	pointer-events: none;
-	position: absolute;
-	right: 0;
-	top: 0;
-	z-index: 1;
-	-webkit-box-shadow: inset -40px 0 20px -20px #31302f, inset 40px 0 20px -20px #31302f;
-	-moz-box-shadow: inset -40px 0 20px -20px #31302f, inset 40px 0 20px -20px #31302f;
-	box-shadow: inset -40px 0 20px -20px #31302f, inset 40px 0 20px -20px #31302f;
-}
-
-.headerBannerScreen::after{
-	content: "";
-	height: 100%;
-	left: 0;
-	margin: 0 auto;
-	pointer-events: none;
-	position: absolute;
-	right: 0;
-	top: 0;
-	z-index: 1;
-	-webkit-box-shadow: inset 0 30px 40px 20px rgba(0, 0, 0, 0.4), inset 0 -150px 69px 1px rgba(0, 0, 0, 0.41);
-	-moz-box-shadow: inset 0 30px 40px 20px rgba(0, 0, 0, 0.4), inset 0 -150px 69px 1px rgba(0, 0, 0, 0.41);
-	box-shadow: inset 0 30px 40px 20px rgba(0, 0, 0, 0.4), inset 0 -150px 69px 1px rgba(0, 0, 0, 0.41);
-}
-
-.nav-pills>li>a {
-    color: #097984;
-}
-.nav-pills>li.active>a {
-    background-color: #097984;
-}
-.nav-pills>li.active>a:hover {
-    background-color: #097984;
-}
-
-@media (max-width: 767px) {
-	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
-		color:#fff;
-	}
-	.navbar-inverse .navbar-nav .open .dropdown-menu>li>a:hover {
-		color:rgb(254, 190, 16) !important;
-	}
-}
-
-.navbar-inverse .navbar-nav>.open>a,
-.navbar-inverse .navbar-nav>.open>a:focus,
-.navbar-inverse .navbar-nav>.open>a:hover,
-.navbar-inverse .navbar-nav>.active>a, 
-.navbar-inverse .navbar-nav>.active>a:focus, 
-.navbar-inverse .navbar-nav>.active>a:hover
-{
-	background-color: rgb(0, 105, 64) !important;
-}
-
-/*=========== NAVBAR DROPDOWNS =========*/
-.mainNavBarTopContainer .dropdown-menu 
-{
-    background-color: rgb(0, 105, 64);
-}
-
-.mainNavBarTopContainer .dropdown-menu>li>a
-{
-    color: #fff;
-}
-
-.mainNavBarTopContainer .dropdown-menu>li>a:focus, 
-.mainNavBarTopContainer .dropdown-menu>li>a:hover
-{
-	color: #000;
-    background-color: rgb(254, 190, 16);
-}
-
-
-/*=========== HEADER ===============*/
-.page-header, .page-header h1{
-	margin:0;
-	padding:0;
-	border:0;
-}
-
-/*===== ADVISORY BOARD ============*/
-@media (max-width: 767px) {
-	.advisoryBoardEntry 
-	{
-		font-size:12px;
-	}
-}
-
-/*====== TILE LINKS ==========*/
-.tileLinkNavigationItem>span::after {
-	display: inline-block;
-    font-family: FontAwesome;
-    font-feature-settings: normal;
-    font-kerning: auto;
-    font-language-override: normal;
-    font-size: inherit;
-    font-size-adjust: none;
-    font-stretch: normal;
-    font-style: normal;
-    font-synthesis: weight style;
-    font-variant: normal;
-    font-weight: normal;
-    line-height: 1;
-    text-rendering: auto;
-    transform: translate(0px, 0px);
-    content: "\f138";
-    padding-left: 8px;
-    font-size: 20px !important;
-}
-
-
-/*========= BACK BUTTON ===========*/
-
-.backButton::before {
-	display: inline-block;
-    font-family: FontAwesome;
-    font-feature-settings: normal;
-    font-kerning: auto;
-    font-language-override: normal;
-    font-size: inherit;
-    font-size-adjust: none;
-    font-stretch: normal;
-    font-style: normal;
-    font-synthesis: weight style;
-    font-variant: normal;
-    font-weight: normal;
-    line-height: 1;
-    text-rendering: auto;
-    transform: translate(0px, 0px);
-    content: "\f190";
-    padding-right: 8px;
-    font-size: 30px !important;
-}
 
 
 
@@ -274,7 +50,6 @@ color: #fff;
 	right: 0;
 	top: 0;
 	z-index: 1;
-	-webkit-box-shadow: inset 0 45px 100px -30px rgba(254, 190, 16, 1);
 }
 
 
@@ -392,9 +167,8 @@ header .icon.circled {
 .btn-primary
 {
 	color: #fff;
-    background-color: #006940;
+    background-color: #000;
     border: none;
-    /*border: solid 5px #006940;*/
 }
 
 .btn-primary:hover,
@@ -403,9 +177,7 @@ header .icon.circled {
 .btn-primary:focus,
 .btn-primary.active
 {
-    background-color: #8AB82D;
-	/*color: rgb(254, 190, 16);
-   /* border: solid 5px rgb(254, 190, 16);*/
+    background-color: #999;
 }
 
 .reactTableContainer
