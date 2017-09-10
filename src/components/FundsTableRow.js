@@ -2,9 +2,14 @@ import React from 'react';
 
 import {Grid, Col, Row } from 'react-bootstrap';
 
-import Done from 'material-ui/svg-icons/action/done';
+import ActionDone from 'material-ui/svg-icons/action/done';
 
 import { LinkContainer } from 'react-router-bootstrap';
+
+import Checkbox from 'material-ui/Checkbox';
+
+import Visibility from 'material-ui/svg-icons/action/visibility';
+import VisibilityOff from 'material-ui/svg-icons/action/visibility-off';
 
 class ScholarshipFundsTableRow extends React.Component
 {
@@ -135,7 +140,7 @@ class HealthFundsTableRow extends React.Component
 		var styles = this.getStyles();
 
 		return(
-			<Row style={(this.props.index %2 == 0 ? styles.normalRow : styles.altRow)}>
+			<Row style={(this.props.index % 2 == 0 ? styles.normalRow : styles.altRow)}>
 				<Col xs={4} >
 
 					<a href={this.props.data.url} target="_blank">
@@ -143,36 +148,36 @@ class HealthFundsTableRow extends React.Component
 					</a>
 				</Col>
 
-				<Col xs={4} >
+				<Col xs={2} sm={2} md={2}>
 					{this.props.data.state}
 				</Col>
 
-				<Col>
-					{this.props.private && 
+				<Col xs={1} sm={1} md={2} >
+					{this.props.data.private == "TRUE" && 
 						<Checkbox
-							checkedIcon={<Visibility />}
-							label="Private"
+							checkedIcon={<ActionDone />}
 							style={styles.checkbox}
+          					checked={true}
 						/>
 					}
 				</Col>
 
-				<Col>
-					{this.props.public && 
+				<Col xs={1} sm={1}  md={this.props.authed ? 1 : 2}>
+					{this.props.data.public == "TRUE" && 
 						<Checkbox
-							checkedIcon={<Visibility />}
-							label="Public"
+							checkedIcon={<ActionDone />}
 							style={styles.checkbox}
+          					checked={true}
 						/>
 					}
 				</Col>
 
-				<Col>
-					{this.props.nonprofit == "TRUE" && 
+				<Col xs={1} sm={1}sm={1} md={this.props.authed ? 1 : 2}>
+					{this.props.data.nonprofit == "TRUE" && 
 						<Checkbox
-							checkedIcon={<Visibility />}
-							label="Non-Profit"
+							checkedIcon={<ActionDone />}
 							style={styles.checkbox}
+          					checked={true}
 						/>
 					}
 				</Col>

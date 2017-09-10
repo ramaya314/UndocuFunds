@@ -11,7 +11,12 @@ import FundsMap from '../components/FundsMap';
 import FundsList from '../components/FundsList';
 import Loading from 'react-loading';
 
+import EnhancedTextField from '../components/EnhancedTextField';
+import Spacer from '../components/Spacer';
+
 import Utils from '../Utils';
+
+import ProfilePage from '../pages/ProfilePage';
 
 
 import {Tabs, Tab} from 'material-ui/Tabs';
@@ -23,6 +28,9 @@ class FundsPage extends Component {
 		this.state = {
 			tabValue: 0,
 			selectedState: '',
+			nameFilter: '',
+			legalStatusRquiredFilter: '',
+			organizationFilter: '',
 		};
 	}
 
@@ -52,10 +60,17 @@ class FundsPage extends Component {
 		return (
 			<MuiThemeProvider muiTheme={getMuiTheme(MainTheme)}>
 				<div>
+					<Spacer space={15} />
+					{this.props.authed &&
+						<div>
+							<ProfilePage />
+							<Spacer space={15} />
+						</div>
+					}
 
 					<Grid className="mainPageContentGrid">
 						<Row>
-							<Col xs={12}>
+							<Col xsHidden={true} smHidden={true} md={12}>
 								<FundsMap onStateClick={this.onStateClick} />
 							</Col>
 

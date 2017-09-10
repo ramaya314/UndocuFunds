@@ -75,7 +75,12 @@ class FundsMap extends React.Component {
 
 		let that = this;
 		return(
-			<Paper width={"100%"} height={600}>
+			<Paper width={"100%"} height={600} onClick={() => { 
+				this.setState({
+					selectedState: "",
+				});
+				this.onStateClick(""); 
+			}}>
 				<Set>
 					{Object.keys(mapData).map(function(stateCode, i) {
 						var stateData = mapData[stateCode];

@@ -45,7 +45,6 @@ class ScholarshipFundsHeader extends React.Component
 
 				{this.props.authed && 
 					<Col xs={2}>
-	          			<button  style={{margin:7}} type="submit" className="btn btn-primary">Apply</button>
 					</Col>
 				}
 
@@ -92,7 +91,6 @@ class LegalFundsHeader extends React.Component
 
 				{this.props.authed && 
 					<Col xs={2}>
-	          			<button style={{margin:7}} type="submit" className="btn btn-primary">Apply</button>
 					</Col>
 				}
 			</Row>
@@ -128,43 +126,24 @@ class HealthFundsHeader extends React.Component
 					Name
 				</Col>
 
-				<Col xs={4}  style={{fontWeight: 'bold'}}>
+				<Col  xs={2}  style={{fontWeight: 'bold'}}>
 					State
 				</Col>
 
-				<Col style={{fontWeight: 'bold'}}>
-					{this.props.private && 
-						<Checkbox
-							checkedIcon={<Visibility />}
-							label="Private"
-							style={styles.checkbox}
-						/>
-					}
+				<Col xs={1} sm={1} md={2} style={{fontWeight: 'bold'}}>
+					Private
 				</Col>
 
-				<Col style={{fontWeight: 'bold'}}>
-					{this.props.public && 
-						<Checkbox
-							checkedIcon={<Visibility />}
-							label="Public"
-							style={styles.checkbox}
-						/>
-					}
+				<Col xs={1} sm={1} md={this.props.authed ? 1 : 2} style={{fontWeight: 'bold'}}>
+					Public
 				</Col>
 
-				<Col style={{fontWeight: 'bold'}}>
-					{this.props.nonprofit == "TRUE" && 
-						<Checkbox
-							checkedIcon={<Visibility />}
-							label="Non-Profit"
-							style={styles.checkbox}
-						/>
-					}
+				<Col xs={1} sm={1} sm={1} md={this.props.authed ? 1 : 2} style={{fontWeight: 'bold'}}>
+					Non-Profit
 				</Col>
 
 				{this.props.authed && 
 					<Col xs={2}>
-	          			<button type="submit" className="btn btn-primary">Apply</button>
 					</Col>
 				}
 			</Row>
