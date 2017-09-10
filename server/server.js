@@ -4,6 +4,7 @@ var app = express();
 var path = require('path');
 var os = require('os');
 
+var googleSheetsProvider = require('./googleSheetsProvider.js');
 
 var mailMain = new mailProvider();
 
@@ -17,6 +18,20 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', true);
   return next();
+});
+
+app.get('/api/funds/scholarships', (req, res) => {
+
+  var isLocalHost = req.headers.host.toLowerCase().indexOf('localhost') >= 0;
+
+  var sheetProvider = new googleSheetsProvider("1bZPAHpFqFyiEykCHXn6ftS0KI2ErspPbMKNdREOrhuI");
+
+  sheetProvider.getRowsForRange("Scholarhips!A3:D1000", function(response) {
+    res.end(JSON.stringify(response));
+  }, function(err) {
+    res.status(401).end("funds fetch fail!: " + err);
+    console.info(err);
+  });
 });
 
 
