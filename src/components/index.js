@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 //import 'bootstrap/dist/css/bootstrap.css'
 import { Route, BrowserRouter, Link, Redirect, Switch } from 'react-router-dom'
 
+import userActions from '../actions/user-actions'
 import Login from './Login'
 import Register from './Register'
 import Home from './Home'
@@ -58,6 +59,7 @@ export default class App extends Component {
   componentDidMount () {
     this.removeListener = firebaseAuth().onAuthStateChanged((user) => {
       if (user) {
+        userActions.setUser(user.uid);
         this.setState({
           authed: true,
           loading: false,
@@ -84,7 +86,7 @@ export default class App extends Component {
                   <Grid className="mainPageContentGrid">
                     <Row>
                       <Col xs={12}>
-                        
+
                         <Switch>
                           <Route path='/' exact component={FundsPage} />
                           <PublicRoute authed={this.state.authed} path='/login' component={Login} />

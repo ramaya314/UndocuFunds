@@ -7,8 +7,22 @@ import MainTheme from '../themes/MainTheme';
 
 import { Grid, Col, Row } from 'react-bootstrap';
 
+const userStore = require('../stores/user');
+
+function getUserState() {
+	return {
+		user: userStore.getUser()
+	}
+}
+
 class ProfilePage extends Component {
- 
+ state = getUserState()
+
+ componentDidMount() {
+	 userStore.addChangeListener(function () {
+		 this.setState(getUserState())
+	 }.bind(this));
+ }
 	getStyles() {
 		const styles = {
 		};
@@ -16,18 +30,24 @@ class ProfilePage extends Component {
 	}
 
 	render() {
-
 		const styles = this.getStyles();
-
+		const {user} = this.state;
 		return (
 			<MuiThemeProvider muiTheme={getMuiTheme(MainTheme)}>
 				<div>
 
-
 					<Grid className="mainPageContentGrid">
 						<Row>
 							<Col xs={12}>
-								Profile
+								<Row>
+								{user.firstName}
+								</Row>
+								<Row>
+								{user.lastName}
+								</Row>
+								<Row>
+								{user.email}
+								</Row>
 							</Col>
 						</Row>
 					</Grid>
@@ -35,7 +55,7 @@ class ProfilePage extends Component {
 				</div>
 			</MuiThemeProvider>
 		);
-	} 
+	}
 }
 
 export default ProfilePage;
