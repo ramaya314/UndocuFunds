@@ -10,6 +10,10 @@ import Utils from '../Utils';
 
 import Spacer from './Spacer';
 
+import SearchInput, {createFilter} from 'react-search-input'
+
+const KEYS_TO_FILTERS = ['user.name', 'subject', 'dest.name']
+
 class FundsList extends React.Component {
 
 	constructor(props) {
@@ -82,10 +86,35 @@ class FundsList extends React.Component {
 			if(that.props.stateFilter.length > 0 && that.props.stateFilter.toLowerCase().trim() != fund.state.toLowerCase().trim()) {
 				return false;
 			}
+
 			return true;
 		});
 
+			console.log(this.props.publicFilter);
 
+		if(filteredData[0] != null && filteredData[0].nameOfTheScholarship != null)
+    		filteredData = filteredData.filter(createFilter(this.props.nameFilter, ["nameOfTheScholarship"]));
+
+		if(filteredData[0] != null && filteredData[0].statusRequired != null)
+    		filteredData = filteredData.filter(createFilter(this.props.legalStatusRquiredFilter, ["statusRequired"]));
+
+		if(filteredData[0] != null && filteredData[0].nameOfTheOrganization != null)
+    		filteredData = filteredData.filter(createFilter(this.props.organizationFilter, ["nameOfTheOrganization"]));
+
+		if(filteredData[0] != null && filteredData[0].filingFeeIncluded != null)
+    		filteredData = filteredData.filter(createFilter(this.props.filingFeeFilter, ["filingFeeIncluded"]));
+
+		if(filteredData[0] != null && filteredData[0].public != null && this.props.publicFilter != null)
+    		filteredData = filteredData.filter(createFilter(this.props.publicFilter, ["public"]));
+
+		if(filteredData[0] != null && filteredData[0].private != null && this.props.privateFilter != null)
+    		filteredData = filteredData.filter(createFilter(this.props.privateFilter, ["private"]));
+
+		if(filteredData[0] != null && filteredData[0].nonprofit != null && this.props.nonProfitFilter != null)
+    		filteredData = filteredData.filter(createFilter(this.props.nonProfitFilter, ["nonprofit"]));
+
+		if(filteredData[0] != null && filteredData[0].name != null)
+    		filteredData = filteredData.filter(createFilter(this.props.nameFilter, ["name"]));
 
 		return(
 			<div>
